@@ -316,7 +316,7 @@ function App() {
         </div>
       )}
     </div>
-  );
+  )
 }
 
 const inputStyle = { padding: '8px', borderRadius: '4px', border: '1px solid #444', background: '#222', color: 'white', fontWeight:'bold', fontSize:'0.9em' };
@@ -329,6 +329,7 @@ const chartTitleStyle = { margin:0, color:'#666', fontSize:'0.8em', letterSpacin
 
 
 export default App;
+
 
 
 
