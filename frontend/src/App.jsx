@@ -136,13 +136,9 @@ function App() {
     <div style={{ padding: '20px', background: '#121212', color: '#e0e0e0', minHeight: '100vh', fontFamily: 'Inter, sans-serif' }}>
       
       {loading && (
-        <div className="loading-message">
-        </div>
-      )}
+        <div className="loading-message">)}
 
       {error && <div className="error-message" style={{color: 'red'}}>{error}</div>}
-    </div>
-  );
       
       {/* HEADER */}
       <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'20px'}}>
@@ -333,6 +329,7 @@ const chartTitleStyle = { margin:0, color:'#666', fontSize:'0.8em', letterSpacin
 
 
 export default App;
+
 
 
 
