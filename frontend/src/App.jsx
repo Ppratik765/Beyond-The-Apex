@@ -7,7 +7,7 @@ import { Chart } from 'chart.js';
 
 Chart.register(zoomPlugin);
 
-const DRIVER_COLORS = ['#36a2eb', '#ff6384', '#00ff9d', '#ff9f40', '#9966ff', '#ffcd56'];
+const DRIVER_COLORS = ['#36a2eb', '#ff6384', '#00ff9d', '#ff9f40', '#9966ff', '#ffcd56', '#c9cbcf', '#e74c3c', '#2ecc71'];
 
 function App() {
   const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
@@ -23,11 +23,10 @@ function App() {
   const rpmChartRef = useRef(null);
   const longGChartRef = useRef(null);
   
-  const [inputs, setInputs] = useState({ year: 2023, race: 'Bahrain', session: 'Qualifying', drivers: 'VER, LEC' });
+  const [inputs, setInputs] = useState({ year: 2025, race: 'Austin', session: 'Qualifying', drivers: 'VER, LEC, NOR, PIA' });
   const [activeDrivers, setActiveDrivers] = useState([]);
 
   const fetchData = async () => {
-    if (!inputs.race || !inputs.session) return;
     setLoading(true);
     setError(null);
     try {
@@ -45,8 +44,11 @@ function App() {
         setData(res.data.data);
         setActiveDrivers(inputs.drivers.split(',').map(d => d.trim().toUpperCase()));}
 
-    } catch (err) { setError(err.message || "Failed to fetch telemetry."); }
-    setLoading(false);
+    } catch (err) { 
+      console.error(err);
+      setError("Failed to load data. The server might be waking up!");
+    } finally {
+      setLoading(false);}
   };
 
   const resetChart = (ref) => { if (ref.current) ref.current.resetZoom(); };
@@ -323,6 +325,7 @@ const chartTitleStyle = { margin:0, color:'#666', fontSize:'0.8em', letterSpacin
 
 
 export default App;
+
 
 
 
