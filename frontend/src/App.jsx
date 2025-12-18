@@ -10,11 +10,12 @@ Chart.register(zoomPlugin);
 const DRIVER_COLORS = ['#36a2eb', '#ff6384', '#00ff9d', '#ff9f40', '#9966ff', '#ffcd56'];
 
 function App() {
+  const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   
-  // Refs
+  // Ref
   const deltaChartRef = useRef(null);
   const speedChartRef = useRef(null);
   const throttleChartRef = useRef(null);
@@ -29,7 +30,7 @@ function App() {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.get(`http://localhost:8000/analyze`, { params: inputs });
+      const res = await axios.get(`${API_BASE_URL}/analyze`, { params: params });
       if (res.data.status === 'error') {
         setError(res.data.message);
         setData(null);
@@ -319,3 +320,4 @@ const chartTitleStyle = { margin:0, color:'#666', fontSize:'0.8em', letterSpacin
 
 
 export default App;
+
