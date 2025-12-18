@@ -136,15 +136,10 @@ function App() {
     <div style={{ padding: '20px', background: '#121212', color: '#e0e0e0', minHeight: '100vh', fontFamily: 'Inter, sans-serif' }}>
 
       <div className="container">
-      <button onClick={fetchData} disabled={loading}>
-        {loading ? "Analyzing..." : "Get Analysis"}
-      </button>
-
       {/* CONDITIONAL RENDERING */}
       
       {loading && (
         <div className="loading-message">
-          <p>🏎️ Starting the engine... (This may take a minute if the server was asleep)</p>
         </div>
       )}
 
@@ -341,6 +336,7 @@ const chartTitleStyle = { margin:0, color:'#666', fontSize:'0.8em', letterSpacin
 
 
 export default App;
+
 
 
 
