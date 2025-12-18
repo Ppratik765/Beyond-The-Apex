@@ -134,6 +134,23 @@ function App() {
 
   return (
     <div style={{ padding: '20px', background: '#121212', color: '#e0e0e0', minHeight: '100vh', fontFamily: 'Inter, sans-serif' }}>
+
+      <div className="container">
+      <button onClick={fetchData} disabled={loading}>
+        {loading ? "Analyzing..." : "Get Analysis"}
+      </button>
+
+      {/* CONDITIONAL RENDERING */}
+      
+      {loading && (
+        <div className="loading-message">
+          <p>🏎️ Starting the engine... (This may take a minute if the server was asleep)</p>
+        </div>
+      )}
+
+      {error && <div className="error-message" style={{color: 'red'}}>{error}</div>}
+    </div>
+  );
       
       {/* HEADER */}
       <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'20px'}}>
@@ -148,8 +165,7 @@ function App() {
       <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', flexWrap: 'wrap' }}>
         <input placeholder="YEAR" value={inputs.year} onChange={e => setInputs({...inputs, year: e.target.value})} style={inputStyle}/>
         <input placeholder="RACE" value={inputs.race} onChange={e => setInputs({...inputs, race: e.target.value})} style={inputStyle}/>
-        {/* Session dropdown removed. Session is always 'Qualifying'. */}
-        <input placeholder="DRIVERS (e.g. VER, HAM, NOR)" value={inputs.drivers} onChange={e => setInputs({...inputs, drivers: e.target.value})} style={{...inputStyle, width: '300px'}}/>
+        <input placeholder="DRIVERS (e.g. VER, LEC, NOR)" value={inputs.drivers} onChange={e => setInputs({...inputs, drivers: e.target.value})} style={{...inputStyle, width: '300px'}}/>
         <button onClick={fetchData} disabled={loading} style={btnStyle}>{loading ? 'ANALYZING...' : 'Analyze Telemetry'}</button>
       </div>
 
@@ -325,6 +341,7 @@ const chartTitleStyle = { margin:0, color:'#666', fontSize:'0.8em', letterSpacin
 
 
 export default App;
+
 
 
 
