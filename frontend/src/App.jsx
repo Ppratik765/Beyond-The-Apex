@@ -141,7 +141,7 @@ function App() {
       
       {/* HEADER */}
       <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'20px'}}>
-        <h1 style={{margin:0, fontSize: '2em'}}>🏎️ Beyond The Apex</h1>
+        <h1 style={{margin:0, fontSize: '2.2em'}}>🏎️ Beyond The Apex</h1>
         <div style={{fontSize:'0.8em', color:'#666', background:'#1a1a1a', padding:'5px 10px', borderRadius:'4px'}}>
           🖱️ <b>Drag</b> to Zoom &nbsp; | &nbsp; ⇧ <b>Shift + Drag</b> to Pan &nbsp; | &nbsp; 
           <span style={{cursor:'pointer', color:'#e10600', fontWeight:'bold'}} onClick={resetAllCharts}>⟲ Reset All</span>
@@ -151,8 +151,8 @@ function App() {
       {/* CONTROLS */}
       <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', flexWrap: 'wrap' }}>
         <input placeholder="YEAR" value={inputs.year} onChange={e => setInputs({...inputs, year: e.target.value})} style={inputStyle}/>
-        <input placeholder="RACE" value={inputs.race} onChange={e => setInputs({...inputs, race: e.target.value})} style={inputStyle}/>
-        <input placeholder="DRIVERS (e.g. VER, LEC, NOR)" value={inputs.drivers} onChange={e => setInputs({...inputs, drivers: e.target.value})} style={{...inputStyle, width: '300px'}}/>
+        <input placeholder="Grand Prix" value={inputs.race} onChange={e => setInputs({...inputs, race: e.target.value})} style={inputStyle}/>
+        <input placeholder="Drivers (e.g. VER, LEC, NOR)" value={inputs.drivers} onChange={e => setInputs({...inputs, drivers: e.target.value})} style={{...inputStyle, width: '300px'}}/>
         <button onClick={fetchData} disabled={loading} style={btnStyle}>{loading ? 'ANALYZING...' : 'Analyze Telemetry'}</button>
       </div>
 
@@ -328,4 +328,5 @@ const chartTitleStyle = { margin:0, color:'#666', fontSize:'0.8em', letterSpacin
 
 
 export default App;
+
 
