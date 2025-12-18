@@ -31,17 +31,10 @@ function App() {
     setLoading(true);
     setError(null);
     try {
-// 1. DEFINE PARAMS HERE
+      // 1. DEFINE PARAMS HERE
       const params = { ...inputs };
-      
-      // 2. Add specific laps logic if needed
-      if(lapsToFetch && lapsToFetch.length > 0) {
-          params.specific_laps = JSON.stringify(lapsToFetch);
-      } else if (isRaceOrPractice) {
-           setLoading(false); return;
-      }
 
-      // 3. NOW 'params' EXISTS AND CAN BE USED
+      // 2. NOW 'params' EXISTS AND CAN BE USED
       const res = await axios.get(`${API_BASE_URL}/analyze`, { params: params });
       
       if (res.data.status === 'error') throw new Error(res.data.message);
@@ -328,5 +321,6 @@ const chartTitleStyle = { margin:0, color:'#666', fontSize:'0.8em', letterSpacin
 
 
 export default App;
+
 
 
